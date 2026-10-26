@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: modus_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: modus
+      POSTGRES_PASSWORD: modus_password
+      POSTGRES_DB: modus_erp
+    ports:
+      - "5432:5432"
+    volumes:
+      - modus_pgdata:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: modus_web
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://modus:modus_password@postgres:5432/modus_erp?sslmode=disable
+      APP_URL: http://localhost:4000
+      SEED_SECRET: modus-secret-seed-key
+
+volumes:
+  modus_pgdata:
