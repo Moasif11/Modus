@@ -6,6 +6,7 @@
     "dev": "react-router dev",
     "build": "react-router build",
     "start": "bun ./build/server/index.js",
+    "db:init": "node ./scripts/init-db.mjs",
     "typecheck": "react-router typegen && tsc --noEmit",
     "doctor": "npx react-doctor@latest",
     "test": "vitest run",
