@@ -67,6 +67,8 @@ import {
   CircleAlert,
   CalendarClock,
   Layers,
+  Palette,
+  Upload,
 } from "lucide-react";
 
 
@@ -150,6 +152,8 @@ const ICON_MAP = {
   circleAlert:  CircleAlert,
   calendarClock: CalendarClock,
   layers:       Layers,
+  palette:      Palette,
+  upload:       Upload,
 };
 
 export function Icon({ name, size = 18, strokeWidth = 1.8, color = "currentColor", style }) {

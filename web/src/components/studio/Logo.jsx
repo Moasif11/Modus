@@ -1,33 +1,92 @@
-export function Logo({ tone = "light", height = 26, accent = "#E11D2C" }) {
-  const ink = tone === "dark" ? "#FFFFFF" : "#0A0A0A";
+import React from "react";
+
+/**
+ * MODUS Official Brand Logo Component
+ *
+ * Implements the MODUS Logo Suite with proper tone and variant selection:
+ * - tone="dark": White text/elements for dark backgrounds (#1E1F1F, black, overlays)
+ * - tone="light": Black text/elements for light backgrounds (white paper, light cards)
+ * - variant="primary": Standard horizontal logo (header, sidebar)
+ * - variant="stacked": Centered stacked logo (login, forgot-password, welcome)
+ * - variant="icon": Minimal geometric icon mark (collapsed sidebar, mobile)
+ */
+export function Logo({
+  tone = "light",
+  variant = "primary",
+  height = 26,
+  customLogoUrl = null,
+  alt = "MODUS ERP",
+  className = "",
+  style = {},
+  ...props
+}) {
+  // If a custom tenant/company logo is provided via white-label settings
+  if (customLogoUrl) {
+    return (
+      <img
+        src={customLogoUrl}
+        alt={alt}
+        height={height}
+        className={className}
+        style={{
+          height: typeof height === "number" ? `${height}px` : height,
+          width: "auto",
+          maxWidth: "100%",
+          objectFit: "contain",
+          display: "inline-block",
+          verticalAlign: "middle",
+          ...style,
+        }}
+        {...props}
+      />
+    );
+  }
+
+  // Resolve logo file from Modus Logo Suite
+  let src = "";
+  if (variant === "icon") {
+    src =
+      tone === "dark"
+        ? "/Assets/logos/Modus-white-icon.webp"
+        : "/Assets/logos/Modus-black-icon.webp";
+  } else if (variant === "stacked") {
+    src =
+      tone === "dark"
+        ? "/Assets/logos/Modus-stacked.webp"
+        : "/Assets/logos/Modus-stacked-black.webp";
+  } else {
+    // Primary horizontal wordmark + icon
+    src =
+      tone === "dark"
+        ? "/Assets/logos/modus-primary-white.webp"
+        : "/Assets/logos/modus-primary-black.webp";
+  }
 
   return (
-    <svg
-      viewBox="0 0 160 38"
+    <img
+      src={src}
+      alt={alt}
       height={height}
-      style={{ display: "block" }}
-      aria-label="MODUS"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Modern geometric M mark */}
-      <rect x="0" y="3" width="7" height="32" rx="3.5" fill={ink} />
-      <polygon points="7,5 18,22 22,22 11,5" fill={accent} />
-      <polygon points="31,5 20,22 16,22 27,5" fill={accent} />
-      <rect x="31" y="3" width="7" height="32" rx="3.5" fill={ink} />
-
-      {/* Crisp Typography: MODUS */}
-      <text
-        x="50"
-        y="28"
-        fill={ink}
-        fontSize="24"
-        fontWeight="800"
-        letterSpacing="2.5"
-        fontFamily="Inter, system-ui, -apple-system, sans-serif"
-      >
-        MODUS
-      </text>
-      <circle cx="152" cy="26" r="3.5" fill={accent} />
-    </svg>
+      className={`modus-brand-logo ${className}`.trim()}
+      style={{
+        height: typeof height === "number" ? `${height}px` : height,
+        width: "auto",
+        maxWidth: "100%",
+        objectFit: "contain",
+        display: "inline-block",
+        verticalAlign: "middle",
+        ...style,
+      }}
+      loading="eager"
+      onError={(e) => {
+        // Fallback to primary black if specific variant fails to load
+        if (e.currentTarget.src !== window.location.origin + "/Assets/logos/modus-primary-black.webp") {
+          e.currentTarget.src = "/Assets/logos/modus-primary-black.webp";
+        }
+      }}
+      {...props}
+    />
   );
 }
+
+export default Logo;

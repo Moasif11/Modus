@@ -87,8 +87,12 @@ Use it as your daily check: who owes you, what's overdue, how's cash flow.
 Go to **Settings → Company** and fill in once:
 - **Company name, registered legal name, address, GSTIN, PAN.**
 - **Bank details** — shown on invoices so clients know where to pay.
-- **Logo** and **signature** — uploaded; they appear on your invoices.
-- **Invoice numbering** — choose a format (e.g. `HI/2026-27/001`, which resets every financial year).
+- **Branding & White-Label Customization:**
+  - **App & Display Name**: Customizes browser title bars, email footers, and dashboard greetings.
+  - **Brand Accent Colors**: Choose a preset palette or assign custom primary and dark-mode brand colors. Dynamically sets `--modus-accent` throughout the web interface.
+  - **Brand Logos**: Upload primary horizontal logo, white variant for dark mode, and a custom web favicon.
+  - **Digital Signature**: Upload an authorized signatory stamp/signature for PDF documents.
+- **Invoice numbering** — choose a format (e.g. `MODUS/2026-27/001`, which resets every financial year).
 - **GST compliance:**
   - **LUT number** — only if you export services (bill foreign clients).
   - **Turnover above ₹5 crore** toggle — leave off unless you cross ₹5 cr.

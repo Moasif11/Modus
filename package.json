@@ -1,0 +1,38 @@
+{
+  "name": "modus-erp",
+  "version": "1.0.0",
+  "description": "MODUS — Modern Open-Source Studio ERP, GST Invoicing & Financial Operations Platform",
+  "private": true,
+  "workspaces": [
+    "web",
+    "mobile"
+  ],
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "dev:web": "npm --prefix web run dev",
+    "dev:mobile": "npm --prefix mobile start",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "test": "npm --prefix web run test",
+    "typecheck": "npm --prefix web run typecheck",
+    "db:init": "npm --prefix web run db:init",
+    "db:seed": "npm --prefix web run db:seed"
+  },
+  "keywords": [
+    "erp",
+    "accounting",
+    "gst",
+    "e-invoicing",
+    "accounts-payable",
+    "react-router",
+    "neon",
+    "postgresql",
+    "white-label",
+    "open-source"
+  ],
+  "author": "MODUS Maintainers <maintainers@modus.local>",
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

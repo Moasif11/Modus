@@ -538,6 +538,24 @@ export default function AppShell({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState("/");
   const [cmdOpen, setCmdOpen] = useState(false);
+  const [branding, setBranding] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/settings/branding")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && !data.error) {
+          setBranding(data);
+          if (data.brandColor) {
+            document.documentElement.style.setProperty("--modus-accent", data.brandColor);
+          }
+          if (data.appName) {
+            document.title = `${data.appName} — Studio ERP & GST Invoicing`;
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -651,7 +669,12 @@ export default function AppShell({ children }) {
           display: "flex", alignItems: "center", gap: 10,
           padding: "14px 8px 16px",
         }}>
-          <Logo tone="dark" height={24} accent="#E11D2C" />
+          <Logo
+            tone="dark"
+            height={24}
+            customLogoUrl={branding?.logoDarkUrl}
+            alt={branding?.appName || "MODUS"}
+          />
         </div>
 
         {/* New Invoice CTA */}
@@ -660,12 +683,14 @@ export default function AppShell({ children }) {
             href="/invoices/new"
             style={{
               display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-              width: "100%", background: "#E11D2C", color: "#fff",
+              width: "100%",
+              background: branding?.brandColor || "#E11D2C",
+              color: "#fff",
               border: "none", cursor: "pointer",
               padding: "11px 14px", borderRadius: 12,
               fontSize: 13.5, fontWeight: 650, textDecoration: "none",
-              boxShadow: "0 8px 20px #E11D2C45",
-              transition: "transform .12s",
+              boxShadow: `0 8px 20px ${(branding?.brandColor || "#E11D2C")}45`,
+              transition: "transform .12s, background .15s",
             }}
             onMouseDown={(e) => (e.currentTarget.style.transform = "scale(.97)")}
             onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}

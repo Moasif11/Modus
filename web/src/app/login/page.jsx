@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/utils/auth";
 import { Logo } from "@/components/studio/Logo";
 import { Icon } from "@/components/studio/icons";
@@ -11,6 +11,16 @@ export default function LoginPage() {
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [branding, setBranding] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/settings/branding")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && !data.error) setBranding(data);
+      })
+      .catch(() => {});
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -94,11 +104,18 @@ export default function LoginPage() {
         <div style={{ maxWidth: 340, width: "100%", margin: "0 auto", position: "relative", zIndex: 1, display: "flex", flexDirection: "column" }}>
           
           <div style={{ marginBottom: 32 }}>
-            <Logo tone="dark" height={26} accent={ACCENT} />
+            <Logo
+              tone="dark"
+              height={28}
+              customLogoUrl={branding?.logoDarkUrl}
+              alt={branding?.appName || "MODUS"}
+            />
           </div>
 
           <h2 style={{ fontSize: 24, fontWeight: 750, color: "#fff", margin: "0 0 6px", letterSpacing: "-0.02em" }}>Welcome back</h2>
-          <p style={{ fontSize: 13.5, color: "rgba(255,255,255,.5)", margin: "0 0 28px" }}>Sign in to your MODUS workspace</p>
+          <p style={{ fontSize: 13.5, color: "rgba(255,255,255,.5)", margin: "0 0 28px" }}>
+            Sign in to your {branding?.appName || "MODUS"} workspace
+          </p>
 
             {error && (
               <div style={{ background: "rgba(220,38,38,.18)", border: "1px solid rgba(220,38,38,.4)", borderRadius: 10, padding: "10px 14px", marginBottom: 18, display: "flex", alignItems: "center", gap: 10 }}>
@@ -165,7 +182,7 @@ export default function LoginPage() {
             </form>
 
             <p style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,.3)", margin: "28px 0 0" }}>
-              MODUS ERP · Open Source Studio Management
+              {branding?.appName || "MODUS ERP"} · Open Source Studio Management
             </p>
           </div>
       </div>

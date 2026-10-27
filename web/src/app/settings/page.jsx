@@ -19,6 +19,7 @@ const ACCENT = "#E11D2C";
 
 const SET_SECTIONS = [
   { id: "company", label: "Company profile", icon: "building" },
+  { id: "branding", label: "Branding & White-Label", icon: "palette" },
   { id: "invoicing", label: "Invoicing & GST", icon: "receipt" },
   { id: "team", label: "Team & roles", icon: "users" },
   { id: "notifications", label: "Notifications", icon: "bell" },
@@ -886,6 +887,7 @@ export default function SettingsPage() {
   const [logoDarkUploading, setLogoDarkUploading] = useState(false);
   const [signatureUploading, setSignatureUploading] = useState(false);
   const [stampUploading, setStampUploading] = useState(false);
+  const [faviconUploading, setFaviconUploading] = useState(false);
   const [users, setUsers] = useState([]);
   // Local state for new API key inputs (never pre-filled with real values)
   const [newApiKeys, setNewApiKeys] = useState({ openrouterApiKey: "", nvidiaApiKey: "", unstructuredApiKey: "" });
@@ -1000,6 +1002,16 @@ export default function SettingsPage() {
     setStampUploading(false);
     if (result.error) { toast.error("Upload failed: " + result.error); return; }
     update("stampUrl", result.url);
+  }
+
+  async function handleFaviconUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    setFaviconUploading(true);
+    const result = await upload({ file });
+    setFaviconUploading(false);
+    if (result.error) { toast.error("Upload failed: " + result.error); return; }
+    update("faviconUrl", result.url);
   }
 
   function panel() {
@@ -1180,6 +1192,471 @@ export default function SettingsPage() {
             </fieldset>
           </Card>
         );
+
+      case "branding": {
+        const brandColor = settings.brandColor || ACCENT;
+        const brandColorDark = settings.brandColorDark || "#991B1B";
+        const appName = settings.appName || "MODUS ERP";
+        const tagline = settings.tagline || "Open Source Studio Management & GST Invoicing";
+
+        const PRESET_COLORS = [
+          { name: "Modus Crimson", hex: "#E11D2C" },
+          { name: "Royal Indigo", hex: "#4F46E5" },
+          { name: "Cyber Sapphire", hex: "#0284C7" },
+          { name: "Emerald Growth", hex: "#059669" },
+          { name: "Imperial Violet", hex: "#7C3AED" },
+          { name: "Sunset Amber", hex: "#D97706" },
+          { name: "Obsidian Slate", hex: "#0F172A" },
+        ];
+
+        return (
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            {/* Live Branding Preview */}
+            <Card pad={24}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                <div>
+                  <h3 style={{ fontSize: 16, fontWeight: 750, color: "#0A0A0A", margin: "0 0 4px" }}>
+                    Live White-Label Preview
+                  </h3>
+                  <p style={{ fontSize: 13, color: "#6B7280", margin: 0 }}>
+                    Real-time preview of your brand identity across Light and Dark themes
+                  </p>
+                </div>
+                <div style={{ display: "flex", gap: 10 }}>
+                  <button
+                    type="button"
+                    onClick={handleSave}
+                    disabled={saving || !canEditCompany}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 7,
+                      padding: "8px 18px",
+                      borderRadius: 10,
+                      border: "none",
+                      background: brandColor,
+                      color: "#fff",
+                      fontSize: 13,
+                      fontWeight: 650,
+                      cursor: saving ? "not-allowed" : "pointer",
+                      boxShadow: `0 4px 14px ${brandColor}40`,
+                      opacity: saving ? 0.7 : 1,
+                    }}
+                  >
+                    <Icon name={saved ? "check" : "save"} size={14} color="#fff" />
+                    {saving ? "Saving…" : saved ? "Branding Saved!" : "Save Changes"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Side-by-side Light / Dark Preview Panels */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+                {/* Light Mode Preview */}
+                <div style={{
+                  border: "1px solid #E5E7EB", borderRadius: 16, padding: 20,
+                  background: "#FFFFFF", boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, paddingBottom: 12, borderBottom: "1px solid #F3F4F6" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      {settings.logoUrl ? (
+                        <img src={settings.logoUrl} alt="Logo Light" style={{ height: 26, maxWidth: 140, objectFit: "contain" }} />
+                      ) : (
+                        <Logo tone="light" height={24} />
+                      )}
+                    </div>
+                    <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: "#F3F4F6", color: "#4B5563" }}>
+                      Light Theme
+                    </span>
+                  </div>
+                  <h4 style={{ fontSize: 14, fontWeight: 700, color: "#111827", margin: "0 0 4px" }}>{appName}</h4>
+                  <p style={{ fontSize: 12, color: "#6B7280", margin: "0 0 16px" }}>{tagline}</p>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <div style={{ padding: "7px 14px", borderRadius: 8, background: brandColor, color: "#fff", fontSize: 12, fontWeight: 650 }}>
+                      Primary Button
+                    </div>
+                    <div style={{ padding: "7px 14px", borderRadius: 8, background: `${brandColor}18`, color: brandColor, fontSize: 12, fontWeight: 650 }}>
+                      Badge / Chip
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dark Mode Preview */}
+                <div style={{
+                  border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 20,
+                  background: "#18181B", color: "#fff", boxShadow: "0 8px 24px rgba(0,0,0,0.3)"
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14, paddingBottom: 12, borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      {settings.logoDarkUrl ? (
+                        <img src={settings.logoDarkUrl} alt="Logo Dark" style={{ height: 26, maxWidth: 140, objectFit: "contain" }} />
+                      ) : (
+                        <Logo tone="dark" height={24} />
+                      )}
+                    </div>
+                    <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: "rgba(255,255,255,0.1)", color: "#E5E7EB" }}>
+                      Dark Sidebar
+                    </span>
+                  </div>
+                  <h4 style={{ fontSize: 14, fontWeight: 700, color: "#F9FAFB", margin: "0 0 4px" }}>{appName}</h4>
+                  <p style={{ fontSize: 12, color: "#9CA3AF", margin: "0 0 16px" }}>{tagline}</p>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <div style={{ padding: "7px 14px", borderRadius: 8, background: brandColor, color: "#fff", fontSize: 12, fontWeight: 650, boxShadow: `0 4px 14px ${brandColor}40` }}>
+                      Action Button
+                    </div>
+                    <div style={{ padding: "7px 14px", borderRadius: 8, background: "rgba(255,255,255,0.08)", color: "#D1D5DB", fontSize: 12, fontWeight: 550 }}>
+                      Secondary
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Platform Identity */}
+            <Card pad={24}>
+              <PanelHeader
+                title="Workspace & Platform Identity"
+                sub="Configure custom company naming displayed on web, documents, and notifications"
+                readOnly={!canEditCompany}
+              />
+              <div style={fieldGrid}>
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 650, color: "#374151", marginBottom: 6 }}>
+                    Application / Workspace Name
+                  </label>
+                  <input
+                    type="text"
+                    className="set-inp"
+                    style={inp}
+                    placeholder="e.g. MODUS ERP or Acme Creative Studio"
+                    value={settings.appName || ""}
+                    onChange={e => update("appName", e.target.value)}
+                  />
+                  <p style={{ fontSize: 11, color: "#9CA3AF", margin: "5px 0 0" }}>
+                    Shown in header, sidebar title, and browser window tab
+                  </p>
+                </div>
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 650, color: "#374151", marginBottom: 6 }}>
+                    Workspace Tagline
+                  </label>
+                  <input
+                    type="text"
+                    className="set-inp"
+                    style={inp}
+                    placeholder="e.g. Finance, Invoicing & GST Workspace"
+                    value={settings.tagline || ""}
+                    onChange={e => update("tagline", e.target.value)}
+                  />
+                  <p style={{ fontSize: 11, color: "#9CA3AF", margin: "5px 0 0" }}>
+                    Shown on authentication screens and outgoing communications
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            {/* Brand Colors */}
+            <Card pad={24}>
+              <PanelHeader
+                title="Theme & Brand Colors"
+                sub="Select a curated enterprise palette or customize exact hex values to match your brand guide"
+                readOnly={!canEditCompany}
+              />
+
+              {/* Preset Palettes */}
+              <div style={{ marginBottom: 20 }}>
+                <label style={{ display: "block", fontSize: 12.5, fontWeight: 650, color: "#374151", marginBottom: 10 }}>
+                  Curated Color Presets
+                </label>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  {PRESET_COLORS.map(p => {
+                    const isSelected = (settings.brandColor || ACCENT).toLowerCase() === p.hex.toLowerCase();
+                    return (
+                      <button
+                        key={p.hex}
+                        type="button"
+                        onClick={() => {
+                          update("brandColor", p.hex);
+                          document.documentElement.style.setProperty("--modus-accent", p.hex);
+                        }}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 8,
+                          padding: "8px 14px",
+                          borderRadius: 10,
+                          border: isSelected ? `2px solid ${p.hex}` : "1px solid #E5E7EB",
+                          background: isSelected ? `${p.hex}14` : "#fff",
+                          cursor: "pointer",
+                          font: "inherit",
+                          fontSize: 12.5,
+                          fontWeight: isSelected ? 700 : 550,
+                          color: isSelected ? p.hex : "#374151",
+                          transition: "all .15s",
+                        }}
+                      >
+                        <span style={{ width: 14, height: 14, borderRadius: "50%", background: p.hex, display: "inline-block" }} />
+                        <span>{p.name}</span>
+                        {isSelected && <Icon name="check" size={13} color={p.hex} />}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Custom Color Pickers */}
+              <div style={fieldGrid}>
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 650, color: "#374151", marginBottom: 6 }}>
+                    Primary Accent Color (Hex)
+                  </label>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <input
+                      type="color"
+                      value={settings.brandColor || ACCENT}
+                      onChange={e => {
+                        update("brandColor", e.target.value);
+                        document.documentElement.style.setProperty("--modus-accent", e.target.value);
+                      }}
+                      style={{
+                        width: 44,
+                        height: 38,
+                        borderRadius: 8,
+                        border: "1px solid #D1D5DB",
+                        cursor: "pointer",
+                        padding: 2,
+                      }}
+                    />
+                    <input
+                      type="text"
+                      className="set-inp"
+                      style={{ ...inp, flex: 1, fontFamily: "ui-monospace, monospace" }}
+                      placeholder="#E11D2C"
+                      value={settings.brandColor || ""}
+                      onChange={e => {
+                        update("brandColor", e.target.value);
+                        if (/^#[0-9A-Fa-f]{6}$/.test(e.target.value)) {
+                          document.documentElement.style.setProperty("--modus-accent", e.target.value);
+                        }
+                      }}
+                    />
+                  </div>
+                  <p style={{ fontSize: 11, color: "#9CA3AF", margin: "5px 0 0" }}>
+                    Used for primary action buttons, active navigation indicators, and highlights
+                  </p>
+                </div>
+
+                <div>
+                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 650, color: "#374151", marginBottom: 6 }}>
+                    Dark / Hover Accent Color (Hex)
+                  </label>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <input
+                      type="color"
+                      value={settings.brandColorDark || "#991B1B"}
+                      onChange={e => update("brandColorDark", e.target.value)}
+                      style={{
+                        width: 44,
+                        height: 38,
+                        borderRadius: 8,
+                        border: "1px solid #D1D5DB",
+                        cursor: "pointer",
+                        padding: 2,
+                      }}
+                    />
+                    <input
+                      type="text"
+                      className="set-inp"
+                      style={{ ...inp, flex: 1, fontFamily: "ui-monospace, monospace" }}
+                      placeholder="#991B1B"
+                      value={settings.brandColorDark || ""}
+                      onChange={e => update("brandColorDark", e.target.value)}
+                    />
+                  </div>
+                  <p style={{ fontSize: 11, color: "#9CA3AF", margin: "5px 0 0" }}>
+                    Used for button active/hover states and gradients
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            {/* Logo Suite & Asset Upload */}
+            <Card pad={24}>
+              <PanelHeader
+                title="Brand Asset Uploads"
+                sub="Upload custom company logos for invoices, light document templates, and dark navigation bars"
+                readOnly={!canEditCompany}
+              />
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                {/* 1. Primary Light Logo */}
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: 16, borderRadius: 14, border: "1px solid #E5E7EB", background: "#F9FAFB",
+                  flexWrap: "wrap", gap: 14,
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{
+                      width: 90, height: 50, borderRadius: 10, background: "#FFFFFF",
+                      border: "1px solid #E5E7EB", display: "flex", alignItems: "center",
+                      justifyContent: "center", overflow: "hidden", padding: 6,
+                    }}>
+                      {settings.logoUrl ? (
+                        <img src={settings.logoUrl} alt="Primary Logo" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                      ) : (
+                        <Logo tone="light" height={20} />
+                      )}
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 13.5, fontWeight: 700, color: "#111827", margin: "0 0 2px" }}>
+                        Primary Light Logo
+                      </p>
+                      <p style={{ fontSize: 12, color: "#6B7280", margin: 0 }}>
+                        {settings.logoUrl ? "Custom logo active" : "Using official MODUS logo suite (black on light)"} · Invoices &amp; Light headers
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <label style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "8px 14px", borderRadius: 9, border: "1px solid #D1D5DB",
+                      background: "#fff", color: "#374151", fontSize: 12.5, fontWeight: 600,
+                      cursor: logoUploading ? "not-allowed" : "pointer",
+                    }}>
+                      <Icon name="upload" size={13} color="#4B5563" />
+                      {logoUploading ? "Uploading…" : "Upload New"}
+                      <input type="file" accept="image/*,image/svg+xml" style={{ display: "none" }} onChange={handleLogoUpload} disabled={logoUploading || !canEditCompany} />
+                    </label>
+                    {settings.logoUrl && (
+                      <button
+                        type="button"
+                        onClick={() => update("logoUrl", null)}
+                        disabled={!canEditCompany}
+                        style={{
+                          padding: "8px 12px", borderRadius: 9, border: "1px solid #FCA5A5",
+                          background: "#FEF2F2", color: "#DC2626", fontSize: 12.5, fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Reset to Default
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* 2. Dark Mode Logo */}
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: 16, borderRadius: 14, border: "1px solid #27272A", background: "#18181B",
+                  flexWrap: "wrap", gap: 14, color: "#fff",
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{
+                      width: 90, height: 50, borderRadius: 10, background: "#09090B",
+                      border: "1px solid rgba(255,255,255,0.12)", display: "flex", alignItems: "center",
+                      justifyContent: "center", overflow: "hidden", padding: 6,
+                    }}>
+                      {settings.logoDarkUrl ? (
+                        <img src={settings.logoDarkUrl} alt="Dark Logo" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                      ) : (
+                        <Logo tone="dark" height={20} />
+                      )}
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 13.5, fontWeight: 700, color: "#F9FAFB", margin: "0 0 2px" }}>
+                        Dark Theme Logo
+                      </p>
+                      <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0 }}>
+                        {settings.logoDarkUrl ? "Custom dark logo active" : "Using official MODUS logo suite (white on dark)"} · App Sidebar &amp; Dark overlays
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <label style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "8px 14px", borderRadius: 9, border: "1px solid rgba(255,255,255,0.2)",
+                      background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 12.5, fontWeight: 600,
+                      cursor: logoDarkUploading ? "not-allowed" : "pointer",
+                    }}>
+                      <Icon name="upload" size={13} color="#fff" />
+                      {logoDarkUploading ? "Uploading…" : "Upload Dark"}
+                      <input type="file" accept="image/*,image/svg+xml" style={{ display: "none" }} onChange={handleLogoDarkUpload} disabled={logoDarkUploading || !canEditCompany} />
+                    </label>
+                    {settings.logoDarkUrl && (
+                      <button
+                        type="button"
+                        onClick={() => update("logoDarkUrl", null)}
+                        disabled={!canEditCompany}
+                        style={{
+                          padding: "8px 12px", borderRadius: 9, border: "1px solid rgba(239,68,68,0.4)",
+                          background: "rgba(239,68,68,0.15)", color: "#FCA5A5", fontSize: 12.5, fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Reset to Default
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* 3. Favicon */}
+                <div style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: 16, borderRadius: 14, border: "1px solid #E5E7EB", background: "#F9FAFB",
+                  flexWrap: "wrap", gap: 14,
+                }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{
+                      width: 50, height: 50, borderRadius: 10, background: "#FFFFFF",
+                      border: "1px solid #E5E7EB", display: "flex", alignItems: "center",
+                      justifyContent: "center", overflow: "hidden", padding: 6,
+                    }}>
+                      {settings.faviconUrl ? (
+                        <img src={settings.faviconUrl} alt="Favicon" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+                      ) : (
+                        <img src="/Assets/logos/favicon.webp" alt="Favicon" style={{ height: 26, width: 26, objectFit: "contain" }} />
+                      )}
+                    </div>
+                    <div>
+                      <p style={{ fontSize: 13.5, fontWeight: 700, color: "#111827", margin: "0 0 2px" }}>
+                        Browser Favicon
+                      </p>
+                      <p style={{ fontSize: 12, color: "#6B7280", margin: 0 }}>
+                        {settings.faviconUrl ? "Custom favicon active" : "Using MODUS brand icon"} · Displayed on browser tabs and bookmark shortcuts
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <label style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      padding: "8px 14px", borderRadius: 9, border: "1px solid #D1D5DB",
+                      background: "#fff", color: "#374151", fontSize: 12.5, fontWeight: 600,
+                      cursor: faviconUploading ? "not-allowed" : "pointer",
+                    }}>
+                      <Icon name="upload" size={13} color="#4B5563" />
+                      {faviconUploading ? "Uploading…" : "Upload Favicon"}
+                      <input type="file" accept="image/x-icon,image/png,image/webp,image/svg+xml" style={{ display: "none" }} onChange={handleFaviconUpload} disabled={faviconUploading || !canEditCompany} />
+                    </label>
+                    {settings.faviconUrl && (
+                      <button
+                        type="button"
+                        onClick={() => update("faviconUrl", null)}
+                        disabled={!canEditCompany}
+                        style={{
+                          padding: "8px 12px", borderRadius: 9, border: "1px solid #FCA5A5",
+                          background: "#FEF2F2", color: "#DC2626", fontSize: 12.5, fontWeight: 600,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Reset to Default
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        );
+      }
 
       case "invoicing":
         return (

@@ -34,6 +34,11 @@ async function ensureCompanySettingsColumns() {
   await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS nvidia_api_key VARCHAR`.catch(() => {});
   await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS nvidia_model VARCHAR DEFAULT 'meta/llama-3.1-405b-instruct'`.catch(() => {});
   await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS unstructured_api_key VARCHAR`.catch(() => {});
+  await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS brand_color VARCHAR(30) DEFAULT '#E11D2C'`.catch(() => {});
+  await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS brand_color_dark VARCHAR(30) DEFAULT '#991B1B'`.catch(() => {});
+  await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS app_name VARCHAR(100) DEFAULT 'MODUS ERP'`.catch(() => {});
+  await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS tagline TEXT DEFAULT 'Open Source Studio Management & GST Invoicing'`.catch(() => {});
+  await sql`ALTER TABLE company_settings ADD COLUMN IF NOT EXISTS favicon_url TEXT`.catch(() => {});
 }
 
 export async function GET(request) {
@@ -101,6 +106,11 @@ export async function GET(request) {
       creditNotePrefix: s.credit_note_prefix || "CN",
       nextCreditNoteNumber: s.next_credit_note_number || 1,
       booksLockedUntil: s.books_locked_until || null,
+      brandColor: s.brand_color || "#E11D2C",
+      brandColorDark: s.brand_color_dark || "#991B1B",
+      appName: s.app_name || "MODUS ERP",
+      tagline: s.tagline || "Open Source Studio Management & GST Invoicing",
+      faviconUrl: s.favicon_url || null,
       
       // Return MASKED API keys ONLY to superadmins — raw keys never leave the server
       ...(isSuperadmin ? {
@@ -179,6 +189,11 @@ export async function PUT(request) {
       nvidiaApiKey,
       nvidiaModel,
       unstructuredApiKey,
+      brandColor,
+      brandColorDark,
+      appName,
+      tagline,
+      faviconUrl,
     } = body;
 
     // Build update query dynamically
@@ -403,6 +418,27 @@ export async function PUT(request) {
       values.push(unstructuredApiKey);
     }
 
+    if (brandColor !== undefined) {
+      updates.push(`brand_color = $${paramIndex++}`);
+      values.push(brandColor);
+    }
+    if (brandColorDark !== undefined) {
+      updates.push(`brand_color_dark = $${paramIndex++}`);
+      values.push(brandColorDark);
+    }
+    if (appName !== undefined) {
+      updates.push(`app_name = $${paramIndex++}`);
+      values.push(appName);
+    }
+    if (tagline !== undefined) {
+      updates.push(`tagline = $${paramIndex++}`);
+      values.push(tagline);
+    }
+    if (faviconUrl !== undefined) {
+      updates.push(`favicon_url = $${paramIndex++}`);
+      values.push(faviconUrl);
+    }
+
     updates.push(`updated_at = NOW()`);
 
     if (updates.length === 1) {
@@ -473,6 +509,11 @@ export async function PUT(request) {
       creditNotePrefix: s.credit_note_prefix || "CN",
       nextCreditNoteNumber: s.next_credit_note_number || 1,
       booksLockedUntil: s.books_locked_until || null,
+      brandColor: s.brand_color || "#E11D2C",
+      brandColorDark: s.brand_color_dark || "#991B1B",
+      appName: s.app_name || "MODUS ERP",
+      tagline: s.tagline || "Open Source Studio Management & GST Invoicing",
+      faviconUrl: s.favicon_url || null,
       // Raw keys never leave the server — return masked display values only
       openrouterApiKeyMasked: maskKey(s.openrouter_api_key),
       openrouterApiKeySet: !!s.openrouter_api_key,

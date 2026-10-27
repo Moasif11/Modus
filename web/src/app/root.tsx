@@ -447,7 +447,8 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
         <script type="module" src="/src/__create/dev-error-overlay.js"></script>
-        <link rel="icon" href="/src/__create/favicon.png" />
+        <link rel="icon" type="image/webp" href="/Assets/logos/favicon.webp" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         {LoadFontsSSR ? <LoadFontsSSR /> : null}
       </head>
       <body>

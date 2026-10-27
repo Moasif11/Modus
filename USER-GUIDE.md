@@ -35,8 +35,11 @@ A step-by-step guide to running your invoicing, expenses, and GST compliance in 
 Go to **Settings → Company** and fill in:
 - **Company name, address, GSTIN, PAN**
 - **Bank details** (shown on invoices for payment)
-- **Logo** and **signature** (uploaded — appears on the invoice)
-- **Invoice numbering** — pick a format (e.g. `HI/2026-27/001`, resets every financial year)
+- **Branding & White-Label:**
+  - **App & Display Name**: Name of your studio/firm displayed across the portal.
+  - **Brand Accent Color**: Select from 7 designer swatches (Emerald, Indigo, Violet, Amber, Rose, Cyan, Slate) or input a custom hex code.
+  - **Logos & Favicon**: Upload your primary logo (for light pages), white logo (for dark theme & headers), and custom browser favicon.
+- **Invoice numbering** — pick a format (e.g. `MODUS/2026-27/001`, resets every financial year)
 - **GST compliance:** LUT number (if you export services), "Turnover above ₹5 crore" toggle
 
 Then add your **Services** (Services menu) — the things you sell (e.g. "Social Media Management"), each with an SAC code and GST rate. These auto-fill when you make invoices.

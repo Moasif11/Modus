@@ -140,6 +140,11 @@ CREATE TABLE IF NOT EXISTS company_settings (
   nvidia_api_key VARCHAR(255),
   nvidia_model VARCHAR(100) DEFAULT 'meta/llama-3.1-405b-instruct',
   unstructured_api_key VARCHAR(255),
+  brand_color VARCHAR(30) DEFAULT '#E11D2C',
+  brand_color_dark VARCHAR(30) DEFAULT '#991B1B',
+  app_name VARCHAR(100) DEFAULT 'MODUS ERP',
+  tagline TEXT DEFAULT 'Open Source Studio Management & GST Invoicing',
+  favicon_url TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
