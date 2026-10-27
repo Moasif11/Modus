@@ -1,6 +1,6 @@
 # MODUS ERP — Comprehensive User Manual (Indian Statutory Compliance)
 
-> 🇮🇳 **Statutory Framework:** MODUS ERP is engineered specifically for Indian enterprises and businesses governed by the **CGST/SGST/IGST Act 2017**, **Income Tax Act 1961**, and **MCA Rule 11(g)**. It handles Place of Supply logic, TDS deductions, GSTR-1 & 3B filing schemas, and GSTR-2B Input Tax Credit reconciliation out of the box.
+> **Statutory Framework:** MODUS ERP is engineered specifically for Indian enterprises and businesses governed by the **CGST/SGST/IGST Act 2017**, **Income Tax Act 1961**, and **MCA Rule 11(g)**. It handles Place of Supply logic, TDS deductions, GSTR-1 & 3B filing schemas, and GSTR-2B Input Tax Credit reconciliation out of the box.
 
 **Your complete operational guide to invoicing, receivables, vendor bills, and statutory compliance.**
 Written in plain, accessible terms — no advanced accounting degree needed. The app executes the statutory tax mathematics; you just follow the workflows.
@@ -276,9 +276,9 @@ You can only claim GST credit (ITC) on a purchase if **your vendor also reported
 1. Download your **GSTR-2B JSON** from the GST portal (Returns → GSTR-2B → Download).
 2. **GSTR-2B Match** → pick the period → **upload** the file → **Reconcile**.
 3. Review:
-   - ✅ **Matched** — safe to claim.
-   - ⚠️ **In books, not in 2B** — your credit is **at risk**; chase the vendor to file.
-   - 🔵 **In 2B, not in books** — a purchase you forgot; add it to claim the credit.
+   - **Matched** — safe to claim.
+   - **In books, not in 2B** — your credit is **at risk**; chase the vendor to file.
+   - **In 2B, not in books** — a purchase you forgot; add it to claim the credit.
    - **Mismatches** — tax amounts differ; investigate.
 
 ---

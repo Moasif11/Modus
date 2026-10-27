@@ -1,6 +1,6 @@
 # MODUS ERP — User Guide (Indian Statutory Compliance Edition)
 
-> 🇮🇳 **Statutory Framework:** MODUS ERP is purpose-built from the ground up for Indian service businesses, IT companies, agencies, and consultancies. It natively implements the **CGST/SGST/IGST Act 2017**, **Income Tax Act (Section 194 TDS)**, and **MCA Rule 11(g) Tamper-Proof Audit Trail** requirements.
+> **Statutory Framework:** MODUS ERP is purpose-built from the ground up for Indian service businesses, IT companies, agencies, and consultancies. It natively implements the **CGST/SGST/IGST Act 2017**, **Income Tax Act (Section 194 TDS)**, and **MCA Rule 11(g) Tamper-Proof Audit Trail** requirements.
 
 A step-by-step practical manual to managing your invoices, vendor payables, Input Tax Credit (ITC), and GST returns. No complex accounting background needed — just follow along.
 
@@ -157,9 +157,9 @@ Each month the govt publishes **GSTR-2B** — the list of purchases your vendors
 1. Download your **GSTR-2B JSON** from the GST portal (Returns → GSTR-2B → Download).
 2. In MODUS, go to **GSTR-2B Match**, pick the period, and **upload the file**.
 3. Click **Reconcile**. You'll see:
-   - ✅ **Matched** — bills that agree with the portal.
-   - ⚠️ **In books, not in 2B** — you claimed it but the vendor hasn't filed → **credit at risk**, chase the vendor.
-   - 🔵 **In 2B, not in books** — a purchase you forgot to record → add it to claim the credit.
+   - **Matched** — bills that agree with the portal.
+   - **In books, not in 2B** — you claimed it but the vendor hasn't filed → **credit at risk**, chase the vendor.
+   - **In 2B, not in books** — a purchase you forgot to record → add it to claim the credit.
    - **Mismatches** — tax amounts differ.
 
 ---
@@ -240,9 +240,9 @@ A credit note is a **legal GST document** (like a negative invoice). The law say
 
 ### GSTR-2B Match page
 The govt only lets you claim GST credit (ITC) on a purchase if **your vendor also reported that sale**. Each month the govt publishes **GSTR-2B** = the list of purchases your vendors declared. Upload that file here and the app matches it to your recorded expenses:
-- ✅ **Matched** — safe to claim.
-- ⚠️ **You recorded it, vendor didn't** → your credit is **at risk**, chase the vendor.
-- 🔵 **Vendor reported it, you forgot** → add it so you don't lose the credit.
+- **Matched** — safe to claim.
+- **You recorded it, vendor didn't** → your credit is **at risk**, chase the vendor.
+- **Vendor reported it, you forgot** → add it so you don't lose the credit.
 
 ### Audit Log page
 A **tamper-proof history** of every change to invoices, bills, and payments — who changed what, and when. It **can't be edited or switched off** — a legal requirement for companies. You rarely touch it; it's there for safety and audits.

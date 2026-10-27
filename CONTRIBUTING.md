@@ -6,13 +6,13 @@ We welcome all contributions: bug fixes, documentation, feature proposals, tax e
 
 ---
 
-## 📋 Code of Conduct
+## Code of Conduct
 
 We are committed to providing a welcoming, inclusive, and harassment-free experience for everyone. Please be respectful, constructive, and collaborative in all discussions and pull requests.
 
 ---
 
-## 🛠️ Development Setup
+## Development Setup
 
 MODUS is structured as a clean monorepo:
 - `web/`: Full-stack React Router v7 + Vite web application with embedded Hono Node API.
@@ -71,7 +71,7 @@ Default credentials:
 
 ---
 
-## 🧪 Testing Guidelines
+## Testing Guidelines
 
 Tax accuracy, GST validation, and mathematical precision are critical to MODUS ERP. We enforce rigorous unit testing on all business rules:
 
@@ -91,7 +91,7 @@ npm --prefix web run test:watch
 
 ---
 
-## 🌿 Git & Branch Workflow
+## Git & Branch Workflow
 
 1. Create a feature branch from `main`:
    ```bash
@@ -111,7 +111,7 @@ npm --prefix web run test:watch
 
 ---
 
-## 🎨 Design & Code Standards
+## Design & Code Standards
 
 - **React Router v7**: Use route modules and standard server actions/loaders where appropriate.
 - **UI Components**: Use Radix UI primitives and consistent CSS design tokens.
@@ -120,6 +120,6 @@ npm --prefix web run test:watch
 
 ---
 
-## 📄 License
+## License
 
 By contributing to MODUS ERP, you agree that your contributions will be licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**.

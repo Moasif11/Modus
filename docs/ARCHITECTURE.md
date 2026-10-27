@@ -4,7 +4,7 @@ This document outlines the software architecture, data design, tax computation p
 
 ---
 
-## 🏛️ System Overview
+## System Overview
 
 MODUS is designed as a modular, full-stack ERP tailored for digital studios, agencies, and service enterprises. It prioritizes sub-second page transitions, statutory compliance accuracy, and multi-tenant white-label flexibility.
 
@@ -41,7 +41,7 @@ graph TD
 
 ---
 
-## 🗄️ Relational Data Model
+## Relational Data Model
 
 MODUS is backed by 29 normalized PostgreSQL tables with strict referential integrity (`ON DELETE RESTRICT` for financial documents) to preserve historical accounting ledgers.
 
@@ -79,7 +79,7 @@ MODUS is backed by 29 normalized PostgreSQL tables with strict referential integ
 
 ---
 
-## 🧮 Indian GST Engine & Tax Pipeline
+## Indian GST Engine & Tax Pipeline
 
 MODUS implements an automated tax resolution pipeline:
 
@@ -100,7 +100,7 @@ MODUS implements an automated tax resolution pipeline:
 
 ---
 
-## 🔒 Security Architecture
+## Security Architecture
 
 - **Statutory Audit Trail (Rule 11(g))**: Every write, update, or status change writes an immutable log row to `audit_logs` storing previous values and updated values as JSON diffs.
 - **Period Locks**: Prevents backdating or modifying historical records after tax returns are submitted.

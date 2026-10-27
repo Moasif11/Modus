@@ -4,7 +4,7 @@ This guide covers setup and deployment for **MODUS ERP** across multiple environ
 
 ---
 
-## 💻 1. Local Development Setup
+## 1. Local Development Setup
 
 ### System Prerequisites
 - **Node.js** `20.0.0+` or **Bun** `1.1+`
@@ -69,7 +69,7 @@ Open **[http://localhost:4000](http://localhost:4000)** in your browser.
 
 ---
 
-## 🐳 2. Docker Compose Deployment
+## 2. Docker Compose Deployment
 
 Run the complete stack with zero host prerequisites except Docker:
 
@@ -83,7 +83,7 @@ This starts:
 
 ---
 
-## ☁️ 3. Neon Serverless PostgreSQL Setup
+## 3. Neon Serverless PostgreSQL Setup
 
 MODUS is preconfigured for [Neon](https://neon.tech) Serverless PostgreSQL:
 
@@ -97,7 +97,7 @@ MODUS is preconfigured for [Neon](https://neon.tech) Serverless PostgreSQL:
 
 ---
 
-## 📱 4. Mobile Client Development (Expo)
+## 4. Mobile Client Development (Expo)
 
 MODUS includes an Expo companion application in `mobile/`:
 

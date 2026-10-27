@@ -4,7 +4,7 @@ MODUS includes an automated tax calculation and compliance engine tailored for I
 
 ---
 
-## 📌 Supported Statutory Standards
+## Supported Statutory Standards
 
 | Regulation / Standard | Authority | MODUS Implementation |
 | --------------------- | --------- | -------------------- |
@@ -17,7 +17,7 @@ MODUS includes an automated tax calculation and compliance engine tailored for I
 
 ---
 
-## 🧭 Place of Supply (POS) Resolution Rules
+## Place of Supply (POS) Resolution Rules
 
 ```
 Origin (Company GSTIN State) vs Destination (Client GSTIN / State of Supply)
@@ -38,7 +38,7 @@ Origin (Company GSTIN State) vs Destination (Client GSTIN / State of Supply)
 
 ---
 
-## 🔍 GSTR-2B Reconciliation Engine
+## GSTR-2B Reconciliation Engine
 
 Input Tax Credit (ITC) leakage is one of the highest financial risks for Indian enterprises. MODUS features an automated GSTR-2B reconciliation module:
 
@@ -52,7 +52,7 @@ Input Tax Credit (ITC) leakage is one of the highest financial risks for Indian 
 
 ---
 
-## 🔒 MCA Rule 11(g) Audit Trail
+## MCA Rule 11(g) Audit Trail
 
 Under Section 143(3) of the Companies Act and Rule 11(g) of the Companies (Audit and Auditors) Rules:
 - MODUS records an append-only audit record in `audit_logs` whenever any financial record (invoice, payment, quote, bill, customer) is created, edited, locked, or deleted.

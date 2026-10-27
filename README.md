@@ -15,8 +15,8 @@
 <br />
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=flat-square)](LICENSE)
-[![Tests: 80 Passing](https://img.shields.io/badge/Tests-80%20Passing-success.svg?style=flat-square&logo=vitest&logoColor=white)](#-testing--quality-assurance)
-[![Compliance: India GST & MCA 11(g)](https://img.shields.io/badge/Compliance-India_GST_|_MCA_11(g)-22c55e.svg?style=flat-square)](#-purpose-built-for-indian-statutory-compliances)
+[![Tests: 80 Passing](https://img.shields.io/badge/Tests-80%20Passing-success.svg?style=flat-square&logo=vitest&logoColor=white)](#testing--quality-assurance)
+[![Compliance: India GST & MCA 11(g)](https://img.shields.io/badge/Compliance-India_GST_|_MCA_11(g)-22c55e.svg?style=flat-square)](#purpose-built-for-indian-statutory-compliances)
 [![React Router 7](https://img.shields.io/badge/React_Router-v7.6-E11D48.svg?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![Runtime: Node 20+ / Bun](https://img.shields.io/badge/Runtime-Node_20+_|_Bun-f472b6.svg?style=flat-square&logo=bun&logoColor=white)](https://bun.sh)
 [![Database: PostgreSQL / Neon](https://img.shields.io/badge/Database-PostgreSQL_|_Neon-00E599.svg?style=flat-square&logo=postgresql&logoColor=white)](https://neon.tech)
@@ -24,7 +24,7 @@
 
 <br />
 
-[**Indian Compliance**](#-purpose-built-for-indian-statutory-compliances) • [**Explore Features**](#-core-capabilities) • [**Quickstart Guide**](#-60-second-quickstart) • [**Architecture**](#-architecture--technology-stack) • [**Documentation**](#-documentation-index)
+[**Indian Compliance**](#purpose-built-for-indian-statutory-compliances) • [**Explore Features**](#core-capabilities) • [**Quickstart Guide**](#quickstart-guide) • [**Architecture**](#architecture--technology-stack) • [**Documentation**](#documentation-index)
 
 <br />
 
@@ -32,7 +32,7 @@
 
 ---
 
-## ⚡ What is MODUS?
+## What is MODUS?
 
 **MODUS** is a production-grade, open-source Enterprise Resource Planning (ERP) and financial operations platform **purpose-built for Indian statutory compliance**. It eliminates clunky legacy accounting software and fragmented spreadsheets by delivering a unified, keyboard-driven interface with sub-second page loads, automated tax rules, and airtight regulatory adherence.
 
@@ -40,7 +40,7 @@ Built specifically around the nuances of Indian corporate finance and taxation�
 
 ---
 
-## 🇮🇳 Purpose-Built for Indian Statutory Compliances
+## Purpose-Built for Indian Statutory Compliances
 
 Unlike generic Western ERPs, MODUS has India's statutory accounting framework baked directly into its database triggers, mathematical core, and document lifecycles:
 
@@ -55,7 +55,7 @@ Unlike generic Western ERPs, MODUS has India's statutory accounting framework ba
 
 ---
 
-## 📸 Product Previews
+## Product Previews
 
 <div align="center">
 
@@ -95,21 +95,21 @@ Unlike generic Western ERPs, MODUS has India's statutory accounting framework ba
 
 ---
 
-## ✨ Core Capabilities
+## Core Capabilities
 
 | Module | Features & Capabilities |
 | :--- | :--- |
-| **📄 End-to-End Receivables** | • Quotations & Client Proposals with version revisions<br />• Proforma Invoices for advance milestone retainers<br />• Statutory Tax Invoices with FY sequential numbering (`MODUS/YYYY-YY/001`)<br />• Partial payments, TDS withholding tracking, bank reconciliations<br />• Section 34 compliant Credit Notes and client refunds |
-| **🇮🇳 Indian GST & Tax Engine** | • Dynamic Place of Supply (POS) resolution (Intra-state CGST+SGST vs Inter-state IGST)<br />• Reverse Charge Mechanism (RCM) calculations for domestic & foreign supplies<br />• Income Tax TDS sections (194C, 194J) with automatic deduction math<br />• Instant GSTR-1 and GSTR-3B offline JSON export ready for GST portal upload |
-| **🔍 GSTR-2B ITC Reconciliation** | • Upload official GSTR-2B JSON statements downloaded from the GST portal<br />• Instant cross-reconciliation with purchase books to prevent Input Tax Credit leakage<br />• Automated detection of missing supplier invoices, tax discrepancies, and Section 17(5) blocked credits |
-| **💸 Payables & Expense Tracking** | • Vendor bills, contractor stipends, and recurring studio operational expenses<br />• Multi-currency payouts (USD, EUR, GBP, AED, INR) with exchange rate conversions<br />• Vendor MSME classification tracking and payment terms enforcement |
-| **🎨 100% White-Label Engine** | • Customize company name, tagline, and portal display titles<br />• Upload primary horizontal logos, dark-mode logos, and browser favicons<br />• Built-in theme engine with curated color presets (Emerald, Indigo, Violet, Amber, Rose, Cyan, Slate) + custom hex picker<br />• Custom authorized digital signature and stamp on PDF documents |
-| **🔒 MCA Rule 11(g) Audit Trail** | • Statutory, tamper-proof audit log capturing every record mutation, timestamp, and user IP<br />• Accounting Period Lock preventing historical modifications once tax returns are filed<br />• Role-based access control (Superadmin, Admin, User) |
-| **📱 Mobile Client Companion** | • Companion React Native / Expo application located in `mobile/`<br />• Multi-platform support for iOS, Android, and mobile web |
+| **End-to-End Receivables** | • Quotations & Client Proposals with version revisions<br />• Proforma Invoices for advance milestone retainers<br />• Statutory Tax Invoices with FY sequential numbering (`MODUS/YYYY-YY/001`)<br />• Partial payments, TDS withholding tracking, bank reconciliations<br />• Section 34 compliant Credit Notes and client refunds |
+| **Indian GST & Tax Engine** | • Dynamic Place of Supply (POS) resolution (Intra-state CGST+SGST vs Inter-state IGST)<br />• Reverse Charge Mechanism (RCM) calculations for domestic & foreign supplies<br />• Income Tax TDS sections (194C, 194J) with automatic deduction math<br />• Instant GSTR-1 and GSTR-3B offline JSON export ready for GST portal upload |
+| **GSTR-2B ITC Reconciliation** | • Upload official GSTR-2B JSON statements downloaded from the GST portal<br />• Instant cross-reconciliation with purchase books to prevent Input Tax Credit leakage<br />• Automated detection of missing supplier invoices, tax discrepancies, and Section 17(5) blocked credits |
+| **Payables & Expense Tracking** | • Vendor bills, contractor stipends, and recurring studio operational expenses<br />• Multi-currency payouts (USD, EUR, GBP, AED, INR) with exchange rate conversions<br />• Vendor MSME classification tracking and payment terms enforcement |
+| **100% White-Label Engine** | • Customize company name, tagline, and portal display titles<br />• Upload primary horizontal logos, dark-mode logos, and browser favicons<br />• Built-in theme engine with curated color presets (Emerald, Indigo, Violet, Amber, Rose, Cyan, Slate) + custom hex picker<br />• Custom authorized digital signature and stamp on PDF documents |
+| **MCA Rule 11(g) Audit Trail** | • Statutory, tamper-proof audit log capturing every record mutation, timestamp, and user IP<br />• Accounting Period Lock preventing historical modifications once tax returns are filed<br />• Role-based access control (Superadmin, Admin, User) |
+| **Mobile Client Companion** | • Companion React Native / Expo application located in `mobile/`<br />• Multi-platform support for iOS, Android, and mobile web |
 
 ---
 
-## 🏛️ Architecture & Technology Stack
+## Architecture & Technology Stack
 
 MODUS combines the speed and ergonomics of **React Router v7 Vite SSR** on the frontend with the lightweight performance of **Hono** for server API routes, backed by serverless **PostgreSQL (Neon)**.
 
@@ -152,7 +152,7 @@ graph LR
 
 ---
 
-## 🚀 60-Second Quickstart
+## Quickstart Guide
 
 ### Option 1: Local Development with Node or Bun
 
@@ -214,7 +214,7 @@ Access the application immediately at `http://localhost:4000`.
 
 ---
 
-## 🎨 White-Label & Customization
+## White-Label & Customization
 
 MODUS includes a built-in **Branding & White-Label Suite** accessible directly from the frontend under **Settings → Company**:
 
@@ -227,7 +227,7 @@ MODUS includes a built-in **Branding & White-Label Suite** accessible directly f
 
 ---
 
-## 🧪 Testing & Quality Assurance
+## Testing & Quality Assurance
 
 MODUS maintains high test coverage across all tax validation algorithms, TDS deduction formulas, and refund arithmetic:
 
@@ -240,29 +240,29 @@ npm --prefix web run test:watch
 ```
 
 ### Test Coverage Highlights:
-- ✅ **GST Validation**: Checksum calculation for 15-character GSTINs using MOD-36 algorithm.
-- ✅ **TDS Rules**: Deductions under Sections 194C, 194J, and custom rate rules.
-- ✅ **Place of Supply**: Verification of Intra-state (CGST+SGST), Inter-state (IGST), and Export tax splits.
-- ✅ **Section 34 Credit Notes**: Cutoff deadline enforcement (Nov 30 following invoice FY).
-- ✅ **Period Locking**: Audit preservation and immutable ledger protection.
+- **GST Validation**: Checksum calculation for 15-character GSTINs using MOD-36 algorithm.
+- **TDS Rules**: Deductions under Sections 194C, 194J, and custom rate rules.
+- **Place of Supply**: Verification of Intra-state (CGST+SGST), Inter-state (IGST), and Export tax splits.
+- **Section 34 Credit Notes**: Cutoff deadline enforcement (Nov 30 following invoice FY).
+- **Period Locking**: Audit preservation and immutable ledger protection.
 
 ---
 
-## 📚 Documentation Index
+## Documentation Index
 
 Comprehensive guides and architectural deep-dives are available in the repository:
 
-- 📖 [**User Guide**](USER-GUIDE.md) — Step-by-step practical manual for day-to-day invoicing, bills, and GST filings.
-- 📘 [**Comprehensive User Manual**](USER-MANUAL.md) — Exhaustive reference covering all 10 ERP modules and workflows.
-- 🏛️ [**System Architecture**](docs/ARCHITECTURE.md) — Deep-dive into data models, security, and document lifecycles.
-- ⚙️ [**Setup & Deployment Guide**](docs/SETUP.md) — Multi-environment setup for Docker, Neon, Supabase, and cloud VMs.
-- ⚖️ [**Statutory GST & Tax Engine**](docs/TAX-ENGINE.md) — Complete specifications on Indian GST, RCM, TDS, and MCA Rule 11(g).
-- 🤝 [**Contributing Guide**](CONTRIBUTING.md) — Guidelines for code style, git workflows, and pull requests.
-- 🛡️ [**Security Policy**](.github/SECURITY.md) — Responsible disclosure process for security vulnerabilities.
+- [**User Guide**](USER-GUIDE.md) — Step-by-step practical manual for day-to-day invoicing, bills, and GST filings.
+- [**Comprehensive User Manual**](USER-MANUAL.md) — Exhaustive reference covering all 10 ERP modules and workflows.
+- [**System Architecture**](docs/ARCHITECTURE.md) — Deep-dive into data models, security, and document lifecycles.
+- [**Setup & Deployment Guide**](docs/SETUP.md) — Multi-environment setup for Docker, Neon, Supabase, and cloud VMs.
+- [**Statutory GST & Tax Engine**](docs/TAX-ENGINE.md) — Complete specifications on Indian GST, RCM, TDS, and MCA Rule 11(g).
+- [**Contributing Guide**](CONTRIBUTING.md) — Guidelines for code style, git workflows, and pull requests.
+- [**Security Policy**](.github/SECURITY.md) — Responsible disclosure process for security vulnerabilities.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 modus/
@@ -303,7 +303,7 @@ modus/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from developers, accountants, tax specialists, and designers! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
 
@@ -320,7 +320,7 @@ git commit -m 'feat(invoicing): add support for multi-rate tax lines'
 
 ---
 
-## 📄 License
+## License
 
 MODUS ERP is free and open-source software licensed under the **[GNU Affero General Public License v3.0 (AGPLv3)](LICENSE)**.
 
