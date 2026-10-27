@@ -1,7 +1,9 @@
-# MODUS ERP — User Manual
+# MODUS ERP — Comprehensive User Manual (Indian Statutory Compliance)
 
-**Your complete guide to invoicing, expenses, and GST compliance.**
-Written in plain English — no accounting background needed. The app does the hard tax maths; you just follow the steps.
+> 🇮🇳 **Statutory Framework:** MODUS ERP is engineered specifically for Indian enterprises and businesses governed by the **CGST/SGST/IGST Act 2017**, **Income Tax Act 1961**, and **MCA Rule 11(g)**. It handles Place of Supply logic, TDS deductions, GSTR-1 & 3B filing schemas, and GSTR-2B Input Tax Credit reconciliation out of the box.
+
+**Your complete operational guide to invoicing, receivables, vendor bills, and statutory compliance.**
+Written in plain, accessible terms — no advanced accounting degree needed. The app executes the statutory tax mathematics; you just follow the workflows.
 
 ---
 

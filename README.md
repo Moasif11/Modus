@@ -10,21 +10,21 @@
 
 ### **The Modern Open-Source Studio ERP, GST Invoicing & Financial Operations Platform**
 
-*Engineered for creative agencies, digital studios, IT consultancies, and modern service firms.*
+*Purpose-built for Indian statutory compliance (GST Act 2017 & MCA Rule 11(g)) — engineered for creative agencies, digital studios, IT consultancies, and modern service firms.*
 
 <br />
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=flat-square)](LICENSE)
 [![Tests: 80 Passing](https://img.shields.io/badge/Tests-80%20Passing-success.svg?style=flat-square&logo=vitest&logoColor=white)](#-testing--quality-assurance)
+[![Compliance: India GST & MCA 11(g)](https://img.shields.io/badge/Compliance-India_GST_|_MCA_11(g)-22c55e.svg?style=flat-square)](#-purpose-built-for-indian-statutory-compliances)
 [![React Router 7](https://img.shields.io/badge/React_Router-v7.6-E11D48.svg?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![Runtime: Node 20+ / Bun](https://img.shields.io/badge/Runtime-Node_20+_|_Bun-f472b6.svg?style=flat-square&logo=bun&logoColor=white)](https://bun.sh)
 [![Database: PostgreSQL / Neon](https://img.shields.io/badge/Database-PostgreSQL_|_Neon-00E599.svg?style=flat-square&logo=postgresql&logoColor=white)](https://neon.tech)
-[![Compliance: India GST & MCA 11(g)](https://img.shields.io/badge/Compliance-India_GST_|_MCA_11(g)-22c55e.svg?style=flat-square)](#-indian-gst--statutory-compliance-engine)
 [![Docker: Ready](https://img.shields.io/badge/Docker-Compose_Ready-2496ED.svg?style=flat-square&logo=docker&logoColor=white)](#option-2-docker-compose-fastest)
 
 <br />
 
-[**Explore Features**](#-core-capabilities) • [**Quickstart Guide**](#-60-second-quickstart) • [**Architecture**](#-architecture--technology-stack) • [**White-Labeling**](#-white-label--customization) • [**Documentation**](#-documentation-index)
+[**Indian Compliance**](#-purpose-built-for-indian-statutory-compliances) • [**Explore Features**](#-core-capabilities) • [**Quickstart Guide**](#-60-second-quickstart) • [**Architecture**](#-architecture--technology-stack) • [**Documentation**](#-documentation-index)
 
 <br />
 
@@ -34,9 +34,24 @@
 
 ## ⚡ What is MODUS?
 
-**MODUS** is a production-grade, open-source Enterprise Resource Planning (ERP) platform built from the ground up for modern service enterprises. It eliminates the clunky, disjointed spreadsheets and legacy accounting software by delivering a unified, keyboard-driven interface with sub-second page loads and airtight statutory compliance.
+**MODUS** is a production-grade, open-source Enterprise Resource Planning (ERP) and financial operations platform **purpose-built for Indian statutory compliance**. It eliminates clunky legacy accounting software and fragmented spreadsheets by delivering a unified, keyboard-driven interface with sub-second page loads, automated tax rules, and airtight regulatory adherence.
 
-Whether you're running a boutique design studio, an international software consultancy, or an expanding digital marketing firm, MODUS handles the entire financial lifecycle—from prospective proposals to automated GST reconciliation, multi-currency payouts, and MCA Rule 11(g) audit compliance.
+Built specifically around the nuances of Indian corporate finance and taxation—from **Goods & Services Tax (CGST, SGST, IGST)** to **MCA Rule 11(g) audit trails**, **Section 194 TDS withholding**, and **GSTR-2B Input Tax Credit reconciliation**—MODUS enables agencies, consultancies, and studios to manage their full financial lifecycle without compliance anxiety.
+
+---
+
+## 🇮🇳 Purpose-Built for Indian Statutory Compliances
+
+Unlike generic Western ERPs, MODUS has India's statutory accounting framework baked directly into its database triggers, mathematical core, and document lifecycles:
+
+| Compliance Pillar | Statutory Framework | How MODUS Implements It |
+| :--- | :--- | :--- |
+| **GST Determination** | CGST & IGST Acts 2017 | Automatic **Place of Supply (POS)** resolution based on 2-digit state codes (01–38). Dynamically applies Intra-state split (**CGST 50% + SGST 50%**) or Inter-state (**IGST 100%**). Supports LUT exports and SEZ zero-rating. |
+| **GSTR-1 & 3B Filing** | GSTN Portal Specifications | Native export of GSTR-1 and GSTR-3B offline tool JSON files, organized rate-wise and table-wise (`b2b`, `b2cl`, `b2cs`, `exp`, `cdnr`, `hsn`). |
+| **GSTR-2B ITC Match** | Section 16(2)(aa) CGST Act | Upload official monthly GSTR-2B JSON to instantly cross-reconcile purchase books against supplier-filed returns. Flags **ITC at Risk** and identifies Section 17(5) blocked credits. |
+| **TDS Withholding** | Income Tax Act, 1961 | Automatically computes Section **194C** (Contractors / Subcontractors) and Section **194J** (Professional & Technical Services) deductions on vendor bills and payout vouchers. |
+| **Credit Note Deadlines**| Section 34(2) CGST Act | Enforces the statutory cutoff date (30th November following the end of the financial year) for issuing tax credit notes against client invoices. |
+| **Audit Trail Mandate** | MCA Rule 11(g) Companies Act | Immutable, tamper-proof edit trail logging every insert, update, status change, and user IP in `audit_logs` with before/after JSON diffs. Period locking freezes books post-filing. |
 
 ---
 

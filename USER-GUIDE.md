@@ -1,8 +1,8 @@
-# MODUS ERP — User Guide
+# MODUS ERP — User Guide (Indian Statutory Compliance Edition)
 
-A step-by-step guide to running your invoicing, expenses, and GST compliance in MODUS. No accounting background needed — just follow along.
+> 🇮🇳 **Statutory Framework:** MODUS ERP is purpose-built from the ground up for Indian service businesses, IT companies, agencies, and consultancies. It natively implements the **CGST/SGST/IGST Act 2017**, **Income Tax Act (Section 194 TDS)**, and **MCA Rule 11(g) Tamper-Proof Audit Trail** requirements.
 
-> **What this app does:** raise GST-correct invoices, track what clients owe you and what you owe vendors, handle refunds and TDS, and produce ready-to-file GST reports. It keeps your books tidy and compliant for an Indian service business.
+A step-by-step practical manual to managing your invoices, vendor payables, Input Tax Credit (ITC), and GST returns. No complex accounting background needed — just follow along.
 
 ---
 
