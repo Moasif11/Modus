@@ -15,6 +15,10 @@ CREATE TABLE IF NOT EXISTS users (
   must_reset_password BOOLEAN DEFAULT false,
   is_active BOOLEAN DEFAULT true,
   avatar_url TEXT,
+  avatar_object_key TEXT,
+  last_login_at TIMESTAMPTZ,
+  country TEXT,
+  department TEXT,
   created_by INTEGER,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
@@ -525,6 +529,12 @@ CREATE TABLE IF NOT EXISTS bills (
   tds_rate NUMERIC(5,2) DEFAULT 0,
   tds_amount NUMERIC(14,2) DEFAULT 0,
   tds_deposited BOOLEAN DEFAULT false,
+  approved_by INTEGER,
+  approved_at TIMESTAMPTZ,
+  rejected_reason TEXT,
+  payee VARCHAR(255),
+  foreign_amount NUMERIC(14,2),
+  foreign_currency VARCHAR(10),
   created_by INTEGER,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
