@@ -117,6 +117,7 @@ async function seed() {
       VALUES ('admin', 'Admin', 'Modus Administrator', 'admin@modus.local', 'superadmin', ${defaultPasswordHash}, false, true, 'System Administrator', 'Operations')
       ON CONFLICT (email) DO UPDATE SET
         role = 'superadmin',
+        password_hash = EXCLUDED.password_hash,
         is_active = true,
         updated_at = NOW();
     `;

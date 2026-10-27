@@ -3,7 +3,7 @@ import { useAuth } from "@/utils/auth";
 import { api } from "@/utils/api";
 import { Logo } from "@/components/studio/Logo";
 import { Icon } from "@/components/studio/icons";
-import SmokeyBackground from "@/components/SmokeyBackground";
+import SmokeyBackground from "@/components/ui/SmokeyBackground";
 
 export default function ResetPasswordPage() {
   const { user, loading, resetPassword } = useAuth();

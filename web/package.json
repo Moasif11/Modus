@@ -71,6 +71,7 @@
     "react-router-dom": "^7.6.0",
     "react-router-hono-server": "^2.13.0",
     "recharts": "2.15.4",
+    "reicon-react": "^1.2.6",
     "resend": "^6.12.4",
     "serialize-error": "^12.0.0",
     "sonner": "^2.0.7",
