@@ -36,6 +36,9 @@ import '../__create/design-mode';
 import type { Route } from './+types/root';
 
 export const links = () => [
+  { rel: "icon", type: "image/webp", href: "/Assets/Modus%20Logo%20Suite/favicon.webp" },
+  { rel: "icon", type: "image/webp", href: "/Assets/logos/favicon.webp" },
+  { rel: "icon", type: "image/webp", href: "/favicon.webp" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
   { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }
@@ -447,6 +450,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
         <script type="module" src="/src/__create/dev-error-overlay.js"></script>
+        <link rel="icon" type="image/webp" href="/Assets/Modus%20Logo%20Suite/favicon.webp" />
         <link rel="icon" type="image/webp" href="/Assets/logos/favicon.webp" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         {LoadFontsSSR ? <LoadFontsSSR /> : null}
